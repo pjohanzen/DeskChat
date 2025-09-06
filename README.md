@@ -1,4 +1,4 @@
-# Lightweight Desktop Chat Application
+# DeskChat
 
 A simple, lightweight desktop chat application with a clean GUI for interacting with local AI models via [Ollama](https://ollama.ai).
 
