@@ -1,6 +1,3 @@
-Perfect 👍 — here’s a **fully updated README** with everything included, plus a **Switching Models** section so you can easily swap between Mistral, LLaMA2, CodeLlama, etc.
-
----
 
 # DeskChat
 
