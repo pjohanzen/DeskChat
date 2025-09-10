@@ -1,89 +1,192 @@
+Perfect 👍 — here’s a **fully updated README** with everything included, plus a **Switching Models** section so you can easily swap between Mistral, LLaMA2, CodeLlama, etc.
+
+---
+
 # DeskChat
 
-A simple, lightweight desktop chat application with a clean GUI for interacting with local AI models via [Ollama](https://ollama.ai).
+**DeskChat** is a simple, modern desktop chat application that lets you interact with **local AI models** using [Ollama](https://ollama.ai).
+It provides a **ChatGPT-like experience** but runs **completely offline**, ensuring **privacy, speed, and zero subscription cost**.
 
-## Features
+---
 
-- **Clean, Modern UI**: Sleek dark theme with an intuitive chat interface.
-- **Local AI Integration**: Powered by Ollama, using the Llama2 model by default.
-- **Real-time Chat**: Interactive conversations with message history.
-- **Cross-platform**: Built with PyQt6, supporting Windows, macOS, and Linux.
-- **Lightweight**: Minimal dependencies for fast startup and low resource usage.
+## ✨ Features
 
-## Screenshot
+* **Messenger-Style Chat UI**
 
-The application offers a modern, dark-themed interface featuring:
+  * Modern dark theme
+  * Chat bubbles for user & AI messages
+  * Smooth scrolling, auto-scroll to latest message
 
-- A chat display area with color-coded messages (user and AI).
-- A text input field with placeholder text for easy message entry.
-- Support for both "Send" button and Enter key for sending messages.
-- A responsive layout that adjusts seamlessly to window resizing.
+* **AI Response Animation**
 
-## Requirements
+  * Shows `💭 DeskChat is thinking...` with animated dots while AI processes
 
-- Python 3.7 or higher
-- PyQt6
-- Ollama (with the Llama2 model installed)
+* **Local AI Integration**
 
-## Installation
+  * Powered by [Ollama](https://ollama.ai)
+  * Default model: **Mistral**
+  * Supports other Ollama models (LLaMA2, CodeLlama, etc.)
 
-1. **Install Python dependencies**:
+* **Real-time Chat**
+
+  * Full conversation history retained
+  * Interactive and responsive
+
+* **Cross-platform**
+
+  * Works on **Windows, macOS, Linux**
+
+* **Lightweight**
+
+  * Minimal dependencies
+  * Efficient even on mid-range machines
+
+---
+
+## 🖼️ Screenshot
+
+*(Insert your screenshot here — showing chat bubbles for user & assistant messages)*
+
+---
+
+## 📦 Requirements
+
+* **Python 3.9+**
+* **PyQt6** (GUI framework)
+* **Ollama** installed and running locally
+
+---
+
+## ⚙️ Installation & Setup
+
+1. **Clone the repo**:
+
+   ```bash
+   git clone https://github.com/yourusername/deskchat.git
+   cd deskchat
+   ```
+
+2. **Install Python dependencies**:
+
    ```bash
    pip install PyQt6 ollama
    ```
 
-2. **Install and set up Ollama**:
-   - Download and install Ollama from [ollama.ai](https://ollama.ai).
-   - Pull the Llama2 model:
+3. **Install Ollama**:
+
+   * Download Ollama from [ollama.ai](https://ollama.ai).
+   * After installation, pull the **Mistral** model (default):
+
      ```bash
-     ollama pull llama2
+     ollama pull mistral
      ```
 
-3. **Run the application**:
+4. *(Optional)* Pull additional models:
+
    ```bash
-   python chat_assistant.py
+   ollama pull llama2
+   ollama pull codellama
+   ollama pull gemma
    ```
 
-## Usage
+5. **Run the application**:
 
-1. Launch the application using the command above.
-2. Type your message in the text input field at the bottom.
-3. Press the "Send" button or hit Enter to interact with the AI.
-4. View the conversation history in the main chat area, with AI responses highlighted in a blue background for clarity.
+   ```bash
+   python deskchat.py
+   ```
 
-## Customization
+---
 
-The application is highly customizable:
+## 💡 Usage
 
-- **Change AI Model**: Update the `model="llama2"` parameter in the `chat_with_ai()` function to use a different Ollama-compatible model.
-- **Adjust Styling**: Modify the `setStyleSheet()` calls to customize colors, fonts, or other UI elements.
-- **Window Settings**: Adjust the `setGeometry()` function to change the default window size and position.
+1. Start DeskChat with:
 
-## Technical Details
+   ```bash
+   python deskchat.py
+   ```
 
-- **GUI Framework**: PyQt6 for a robust, cross-platform desktop interface.
-- **AI Backend**: Ollama API for efficient local model inference.
-- **Architecture**: Event-driven design with separate logic for message handling and display.
-- **Error Handling**: Graceful handling of connection issues with user-friendly error messages.
+2. Type your message at the bottom input bar.
 
-## Troubleshooting
+3. Press **Enter** or click **Send**.
 
-- **"Connection Error"**: Ensure the Ollama server is running (`ollama serve`).
-- **"Model not found"**: Verify the Llama2 model is installed (`ollama pull llama2`).
-- **UI not displaying**: Confirm PyQt6 is installed correctly (`pip install PyQt6`).
+4. DeskChat responds with **AI messages in chat bubbles**.
 
-## License
+5. The full conversation stays visible in the window.
 
-This project is open source and licensed under the MIT License. Feel free to modify and distribute as needed.
+---
 
-## Contributing
+## 🔄 Switching Models
 
-Contributions are welcome! To contribute, please fork the repository and submit a pull request. Some ideas for enhancements include:
+DeskChat is model-agnostic — you can switch between supported Ollama models:
 
-- Support for multiple AI models.
-- Message export and import functionality.
-- Customizable themes and UI styles.
-- Voice input/output integration.
-- Message search and filtering capabilities.
+1. Open the code (`deskchat.py`).
 
-For bug reports or feature requests, please open an issue on the GitHub repository.
+2. Look for:
+
+   ```python
+   MODEL_NAME = "mistral"
+   ```
+
+3. Replace `"mistral"` with any installed model:
+
+   * `"llama2"` → Meta’s LLaMA 2
+   * `"codellama"` → Code-optimized LLaMA
+   * `"gemma"` → Lightweight Google model
+   * `"mistral"` → Default balanced model
+
+4. Restart the app.
+
+Example:
+
+```python
+MODEL_NAME = "llama2"
+```
+
+---
+
+## 🎨 Customization
+
+* **Bubble Styling**: Edit the `refresh_chat_display()` function to change chat bubble colors, fonts, or alignments.
+* **Window Settings**: Adjust `window.setGeometry(500, 200, 500, 600)` for default size.
+* **Themes**: Update the `setStyleSheet()` calls to customize dark/light mode.
+
+---
+
+## 🔧 Troubleshooting
+
+* **Model not found**
+  Run:
+
+  ```bash
+  ollama pull mistral
+  ```
+
+* **Ollama not running**
+  Make sure the Ollama service is active in the background.
+
+* **Black or Empty Window**
+  Reinstall PyQt6:
+
+  ```bash
+  pip install --upgrade PyQt6
+  ```
+
+---
+
+## 📜 License
+
+MIT License – free for personal & commercial use.
+
+---
+
+## 🚀 Roadmap / Future Features
+
+* ✅ Local chat bubbles (like Messenger/WhatsApp)
+* ⏳ Multi-model dropdown to switch models inside UI
+* ⏳ Export chat history to file
+* ⏳ Voice input/output (speech-to-text + TTS)
+* ⏳ Custom themes
+
+---
+
+👉 DeskChat = your **personal, private ChatGPT alternative** powered by **Ollama + local AI models**.
